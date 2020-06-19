@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { json } = require('body-parser');
 
 
 // Create a new instance of express 
@@ -67,6 +68,12 @@ app.get("/", (req, res) => {
       res.status(500).send()
     }
   }) 
+
+  //user register
+  app.post("/user/register", (req, res)=>{
+    const body = JSON.stringify(req.body);
+    console.log(body);
+  })
 
   //user login
   app.post("/login", (req, res)=>{
