@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   //admin register 
   app.post("/admin/register", async (req, res)=>{ 
     try{
-      //hash the password for safty
+      //hash the password for safty before saving
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
       const adminUser = {name: req.body.name, email:req.body.email, password:hashedPassword} 
       //generate access token to identify user
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
       console.log(accessToken)
       //save to the db which we don't have yet so lets just log 
       console.log(adminUser)
-      res.json({accessToken: accessToken, adminUser})
+      res.json({accessToken: accessToken})
     }catch{
       res.status(500).send('An error occoured')
     }
