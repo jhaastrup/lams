@@ -32,11 +32,14 @@ app.get("/", (req, res) => {
       const accessToken =   jwt.sign(adminUser, process.env.ACCESS_TOKEN_SECRET)
       //console.log(accessToken)
       //save to the db which we don't have yet so lets just log 
-      //console.log(adminUser)
+      console.log(adminUser)
       res.json({accessToken: accessToken})
-    }catch{
-      res.status(500).send('An error occoured')
+    }catch (err){
+      console.log(err)
+      res.status(500).send()
     }
+
+
   }) 
 
   //middleware to authenticate token
