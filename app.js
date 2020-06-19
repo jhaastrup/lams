@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
       res.json({accessToken: accessToken})
     }catch (err){
       console.log(err)
-      res.status(500).send()
+      res.status(500).send(err)
     }
 
 
